@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -6,6 +7,7 @@
 <meta name="theme-color" content="#101114">
 <title>FOOTBALL INTELLIGENCE – PRO</title>
 <style>
+* { box-sizing: border-box; }
 body {
   margin: 0;
   padding: 20px;
@@ -27,33 +29,98 @@ h2 { font-size: 23px; }
   margin-top: 18px;
 }
 p { font-size: 17px; color: #d0d0d0; }
+button {
+  background: #171a20;
+  color: white;
+  border: 1px solid #ff7900;
+  border-radius: 9px;
+  padding: 14px;
+  font-size: 17px;
+  cursor: pointer;
+}
+button:active { background: #ff7900; color: black; }
+.leagues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+.league-button { width: 100%; }
+.back { margin-top: 18px; width: 100%; }
+.hidden { display: none; }
 </style>
 </head>
 <body>
+
 <header>
 <h1>FOOTBALL INTELLIGENCE</h1>
 <h2>PRO – CENTRUM ANALIZ</h2>
 </header>
+
+<main id="home">
+
 <div class="panel">
 <h2>WITAJ W CENTRUM DOWODZENIA</h2>
 <p>Nasza nowa platforma analizy piłkarskiej.</p>
 </div>
+
 <div class="panel">
 <h2>WYBÓR LIG</h2>
-<p>Anglia · Hiszpania · Niemcy · Włochy</p>
-<p>Francja · Holandia · Portugalia · Polska</p>
+<p>Wybierz kraj i przejdź do odpowiedniej ligi.</p>
+<div class="leagues">
+<button class="league-button" onclick="openLeague('Anglia')">🏴 Anglia</button>
+<button class="league-button" onclick="openLeague('Hiszpania')">🇪🇸 Hiszpania</button>
+<button class="league-button" onclick="openLeague('Niemcy')">🇩🇪 Niemcy</button>
+<button class="league-button" onclick="openLeague('Włochy')">🇮🇹 Włochy</button>
+<button class="league-button" onclick="openLeague('Francja')">🇫🇷 Francja</button>
+<button class="league-button" onclick="openLeague('Holandia')">🇳🇱 Holandia</button>
+<button class="league-button" onclick="openLeague('Portugalia')">🇵🇹 Portugalia</button>
+<button class="league-button" onclick="openLeague('Polska')">🇵🇱 Polska</button>
 </div>
+</div>
+
 <div class="panel">
 <h2>ANALIZATOR MECZÓW</h2>
 <p>Moduł w przygotowaniu.</p>
 </div>
+
 <div class="panel">
 <h2>GENERATOR 100 KUPONÓW</h2>
 <p>Moduł w przygotowaniu.</p>
 </div>
+
 <div class="panel">
 <h2>RAPORTY I STATYSTYKI</h2>
 <p>Moduł w przygotowaniu.</p>
 </div>
+
+</main>
+
+<section id="leagueView" class="hidden">
+<div class="panel">
+<h2 id="leagueTitle">WYBRANA LIGA</h2>
+<p id="leagueDescription"></p>
+<p>Moduł analizy meczów tej ligi zostanie tutaj uruchomiony.</p>
+</div>
+<button class="back" onclick="goHome()">← POWRÓT DO CENTRUM</button>
+</section>
+
+<script>
+function openLeague(name) {
+  document.getElementById('home').classList.add('hidden');
+  document.getElementById('leagueView').classList.remove('hidden');
+  document.getElementById('leagueTitle').textContent = name.toUpperCase();
+  document.getElementById('leagueDescription').textContent =
+    'Wybrana liga: ' + name;
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  document.getElementById('leagueView').classList.add('hidden');
+  document.getElementById('home').classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+</script>
+
 </body>
 </html>
