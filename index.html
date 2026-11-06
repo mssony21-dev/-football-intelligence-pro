@@ -6,8 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101114">
 <title>FOOTBALL INTELLIGENCE – PRO</title>
+
 <style>
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 20px;
@@ -15,12 +17,19 @@ body {
   color: white;
   font-family: Arial, sans-serif;
 }
+
 header {
   border-bottom: 3px solid #ff7900;
   padding-bottom: 18px;
 }
-h1 { color: #ff7900; font-size: 27px; }
+
+h1 {
+  color: #ff7900;
+  font-size: 27px;
+}
+
 h2 { font-size: 23px; }
+
 .panel {
   background: #252830;
   border: 1px solid #ff7900;
@@ -28,90 +37,329 @@ h2 { font-size: 23px; }
   padding: 18px;
   margin-top: 18px;
 }
-p { font-size: 17px; color: #d0d0d0; }
+
+p {
+  font-size: 17px;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
 button {
   background: #171a20;
   color: white;
   border: 1px solid #ff7900;
   border-radius: 9px;
   padding: 14px;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
+  min-height: 48px;
 }
-button:active { background: #ff7900; color: black; }
+
+button:active {
+  background: #ff7900;
+  color: black;
+}
+
 .leagues {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 15px;
 }
-.league-button { width: 100%; }
-.back { margin-top: 18px; width: 100%; }
-.hidden { display: none; }
+
+.league-button {
+  width: 100%;
+}
+
+.back {
+  margin-top: 18px;
+  width: 100%;
+}
+
+.hidden { display: none !important; }
+
+.section-title {
+  color: #ff7900;
+  font-size: 19px;
+  margin-top: 25px;
+}
+
+.small-text {
+  color: #999;
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 35px;
+  padding: 15px 0;
+  border-top: 1px solid #444;
+  color: #888;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 360px) {
+  body { padding: 13px; }
+  h1 { font-size: 23px; }
+  h2 { font-size: 20px; }
+  button { font-size: 14px; }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>FOOTBALL INTELLIGENCE</h1>
-<h2>PRO – CENTRUM ANALIZ</h2>
+  <h1>FOOTBALL INTELLIGENCE</h1>
+  <h2>PRO – CENTRUM ANALIZ</h2>
+  <p class="small-text">PROFESJONALNE CENTRUM ANALIZ PIŁKARSKICH</p>
 </header>
+
+<!-- STRONA GŁÓWNA -->
 
 <main id="home">
 
-<div class="panel">
-<h2>WITAJ W CENTRUM DOWODZENIA</h2>
-<p>Nasza nowa platforma analizy piłkarskiej.</p>
-</div>
+  <div class="panel">
+    <h2>WITAJ W CENTRUM DOWODZENIA</h2>
+    <p>Nasza platforma analizy piłkarskiej.</p>
+    <p>Wybieraj rozgrywki, analizuj spotkania i twórz własne zestawienia.</p>
+  </div>
 
+  <!-- PUCHARY EUROPEJSKIE -->
 
-<!-- PUCHARY EUROPEJSKIE -->
-<div class="panel">
-<h2>🏆 PUCHARY EUROPEJSKIE</h2>
-<p>Najważniejsze rozgrywki klubowe UEFA.</p>
-<div class="leagues">
-<button class="league-button" onclick="openLeague('Liga Mistrzów')">🏆 Liga Mistrzów</button>
-<button class="league-button" onclick="openLeague('Liga Europy')">🏆 Liga Europy</button>
-<button class="league-button" onclick="openLeague('Liga Konferencji')">🏆 Liga Konferencji</button>
-</div>
-</div>
+  <div class="panel">
+    <h2>🏆 PUCHARY EUROPEJSKIE</h2>
+    <p>Najważniejsze rozgrywki klubowe UEFA.</p>
 
-<!-- LIGI KRAJOWE -->
-<div class="panel">
-<h2>🌍 LIGI KRAJOWE</h2>
-<p>Wybierz ligę krajową.</p>
-<div class="leagues">
-<button class="league-button" onclick="openLeague('Anglia')">🏴 Anglia</button>
-<button class="league-button" onclick="openLeague('Hiszpania')">🇪🇸 Hiszpania</button>
-<button class="league-button" onclick="openLeague('Niemcy')">🇩🇪 Niemcy</button>
-<button class="league-button" onclick="openLeague('Włochy')">🇮🇹 Włochy</button>
-<button class="league-button" onclick="openLeague('Francja')">🇫🇷 Francja</button>
-<button class="league-button" onclick="openLeague('Holandia')">🇳🇱 Holandia</button>
-<button class="league-button" onclick="openLeague('Portugalia')">🇵🇹 Portugalia</button>
-<button class="league-button" onclick="openLeague('Polska')">🇵🇱 Polska</button>
-</div>
-</div>
+    <div class="leagues">
+      <button class="league-button"
+        onclick="openCompetition('Liga Mistrzów','Puchar europejski')">
+        🏆 Liga Mistrzów
+      </button>
 
-<!-- PUCHARY KRAJOWE -->
-<div class="panel">
-<h2>🥇 PUCHARY KRAJOWE</h2>
-<p>Rozgrywki pucharowe poszczególnych państw.</p>
-<div class="leagues">
-<button class="league-button" onclick="openLeague('FA Cup')">🏆 FA Cup</button>
-<button class="league-button" onclick="openLeague('Copa del Rey')">🏆 Copa del Rey</button>
-<button class="league-button" onclick="openLeague('DFB-Pokal')">🏆 DFB-Pokal</button>
-<button class="league-button" onclick="openLeague('Coppa Italia')">🏆 Coppa Italia</button>
-<button class="league-button" onclick="openLeague('Coupe de France')">🏆 Coupe de France</button>
-<button class="league-button" onclick="openLeague('KNVB Beker')">🏆 KNVB Beker</button>
-<button class="league-button" onclick="openLeague('Taca de Portugal')">🏆 Taça de Portugal</button>
-<button class="league-button" onclick="openLeague('Puchar Polski')">🏆 Puchar Polski</button>
-</div>
-</div>
+      <button class="league-button"
+        onclick="openCompetition('Liga Europy','Puchar europejski')">
+        🏆 Liga Europy
+      </button>
 
-<!-- WSZYSTKIE ROZGRYWKI -->
-<div class="panel">
-<h2>⚽ WSZYSTKIE ROZGRYWKI</h2>
-<p>Jedno miejsce do przeglądania wszystkich dostępnych rozgrywek.</p>
-<button class="league-button" onclick="openLeague('Wszystkie rozgrywki')">OTWÓRZ WSZYSTKIE ROZGRYWKI</button>
-</div>
-  
+      <button class="league-button"
+        onclick="openCompetition('Liga Konferencji','Puchar europejski')">
+        🏆 Liga Konferencji
+      </button>
+    </div>
+  </div>
+
+  <!-- LIGI KRAJOWE -->
+
+  <div class="panel">
+    <h2>🌍 LIGI KRAJOWE</h2>
+    <p>Wybierz kraj i przejdź do rozgrywek ligowych.</p>
+
+    <div class="leagues">
+      <button class="league-button" onclick="openCompetition('Anglia','Liga krajowa')">🏴 Anglia</button>
+      <button class="league-button" onclick="openCompetition('Hiszpania','Liga krajowa')">🇪🇸 Hiszpania</button>
+      <button class="league-button" onclick="openCompetition('Niemcy','Liga krajowa')">🇩🇪 Niemcy</button>
+      <button class="league-button" onclick="openCompetition('Włochy','Liga krajowa')">🇮🇹 Włochy</button>
+      <button class="league-button" onclick="openCompetition('Francja','Liga krajowa')">🇫🇷 Francja</button>
+      <button class="league-button" onclick="openCompetition('Holandia','Liga krajowa')">🇳🇱 Holandia</button>
+      <button class="league-button" onclick="openCompetition('Portugalia','Liga krajowa')">🇵🇹 Portugalia</button>
+      <button class="league-button" onclick="openCompetition('Polska','Liga krajowa')">🇵🇱 Polska</button>
+    </div>
+  </div>
+
+  <!-- PUCHARY KRAJOWE -->
+
+  <div class="panel">
+    <h2>🥇 PUCHARY KRAJOWE</h2>
+    <p>Rozgrywki pucharowe poszczególnych państw.</p>
+
+    <div class="leagues">
+      <button class="league-button" onclick="openCompetition('FA Cup','Puchar krajowy')">🏆 FA Cup</button>
+      <button class="league-button" onclick="openCompetition('Copa del Rey','Puchar krajowy')">🏆 Copa del Rey</button>
+      <button class="league-button" onclick="openCompetition('DFB-Pokal','Puchar krajowy')">🏆 DFB-Pokal</button>
+      <button class="league-button" onclick="openCompetition('Coppa Italia','Puchar krajowy')">🏆 Coppa Italia</button>
+      <button class="league-button" onclick="openCompetition('Coupe de France','Puchar krajowy')">🏆 Coupe de France</button>
+      <button class="league-button" onclick="openCompetition('KNVB Beker','Puchar krajowy')">🏆 KNVB Beker</button>
+      <button class="league-button" onclick="openCompetition('Taça de Portugal','Puchar krajowy')">🏆 Taça de Portugal</button>
+      <button class="league-button" onclick="openCompetition('Puchar Polski','Puchar krajowy')">🏆 Puchar Polski</button>
+    </div>
+  </div>
+
+  <!-- WSZYSTKIE ROZGRYWKI -->
+
+  <div class="panel">
+    <h2>⚽ WSZYSTKIE ROZGRYWKI</h2>
+    <p>Jedno miejsce do przeglądania wszystkich dostępnych rozgrywek.</p>
+    <button class="league-button" onclick="openAllCompetitions()">
+      OTWÓRZ WSZYSTKIE ROZGRYWKI
+    </button>
+  </div>
+
+  <!-- POZOSTAŁE MODUŁY -->
+
+  <div class="panel">
+    <h2>📊 ANALIZATOR MECZÓW</h2>
+    <p>Moduł w przygotowaniu.</p>
+  </div>
+
+  <div class="panel">
+    <h2>🎟️ GENERATOR 100 KUPONÓW</h2>
+    <p>Moduł w przygotowaniu.</p>
+  </div>
+
+  <div class="panel">
+    <h2>📈 RAPORTY I STATYSTYKI</h2>
+    <p>Moduł w przygotowaniu.</p>
+  </div>
+
+</main>
+
+<!-- EKRAN WYBRANEJ ROZGRYWKI -->
+
+<section id="competitionView" class="hidden">
+
+  <div class="panel">
+    <p class="small-text" id="competitionType"></p>
+    <h2 id="competitionTitle"></h2>
+
+    <p id="competitionDescription"></p>
+
+    <div class="section-title">ANALIZA ROZGRYWEK</div>
+
+    <p>Terminarze, wyniki, statystyki i analiza spotkań zostaną podłączone w kolejnym etapie.</p>
+
+    <p class="small-text">
+      Moduł przygotowany do rozbudowy.
+    </p>
+  </div>
+
+  <button class="back" onclick="goHome()">
+    ← POWRÓT DO CENTRUM
+  </button>
+
+</section>
+
+<!-- EKRAN WSZYSTKICH ROZGRYWEK -->
+
+<section id="allView" class="hidden">
+
+  <div class="panel">
+    <h2>⚽ WSZYSTKIE ROZGRYWKI</h2>
+    <p>Wybierz dowolne rozgrywki z całej platformy.</p>
+    <div id="allCompetitionsList"></div>
+  </div>
+
+  <button class="back" onclick="goHome()">
+    ← POWRÓT DO CENTRUM
+  </button>
+
+</section>
+
+<footer>
+  FOOTBALL INTELLIGENCE – PRO<br>
+  CENTRUM ANALIZ PIŁKARSKICH
+</footer>
+
+<script>
+
+const competitions = [
+  {name:'Liga Mistrzów', type:'Puchar europejski'},
+  {name:'Liga Europy', type:'Puchar europejski'},
+  {name:'Liga Konferencji', type:'Puchar europejski'},
+
+  {name:'Anglia', type:'Liga krajowa'},
+  {name:'Hiszpania', type:'Liga krajowa'},
+  {name:'Niemcy', type:'Liga krajowa'},
+  {name:'Włochy', type:'Liga krajowa'},
+  {name:'Francja', type:'Liga krajowa'},
+  {name:'Holandia', type:'Liga krajowa'},
+  {name:'Portugalia', type:'Liga krajowa'},
+  {name:'Polska', type:'Liga krajowa'},
+
+  {name:'FA Cup', type:'Puchar krajowy'},
+  {name:'Copa del Rey', type:'Puchar krajowy'},
+  {name:'DFB-Pokal', type:'Puchar krajowy'},
+  {name:'Coppa Italia', type:'Puchar krajowy'},
+  {name:'Coupe de France', type:'Puchar krajowy'},
+  {name:'KNVB Beker', type:'Puchar krajowy'},
+  {name:'Taça de Portugal', type:'Puchar krajowy'},
+  {name:'Puchar Polski', type:'Puchar krajowy'}
+];
+
+function hideAllViews() {
+  document.getElementById('home').classList.add('hidden');
+  document.getElementById('competitionView').classList.add('hidden');
+  document.getElementById('allView').classList.add('hidden');
+}
+
+function openCompetition(name, type) {
+  hideAllViews();
+
+  document.getElementById('competitionView').classList.remove('hidden');
+
+  document.getElementById('competitionTitle').textContent =
+    name.toUpperCase();
+
+  document.getElementById('competitionType').textContent =
+    type.toUpperCase();
+
+  document.getElementById('competitionDescription').textContent =
+    'Wybrane rozgrywki: ' + name;
+
+  window.scrollTo(0,0);
+}
+
+function openAllCompetitions() {
+  hideAllViews();
+
+  const section = document.getElementById('allView');
+  const list = document.getElementById('allCompetitionsList');
+
+  list.innerHTML = '';
+
+  const groups = [
+    'Puchar europejski',
+    'Liga krajowa',
+    'Puchar krajowy'
+  ];
+
+  groups.forEach(group => {
+    const heading = document.createElement('h3');
+    heading.className = 'section-title';
+    heading.textContent = group.toUpperCase();
+    list.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'leagues';
+
+    competitions
+      .filter(item => item.type === group)
+      .forEach(item => {
+        const button = document.createElement('button');
+        button.className = 'league-button';
+        button.textContent = item.name;
+
+        button.addEventListener('click', () => {
+          openCompetition(item.name, item.type);
+        });
+
+        grid.appendChild(button);
+      });
+
+    list.appendChild(grid);
+  });
+
+  section.classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  hideAllViews();
+  document.getElementById('home').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+</script>
+
+</body>
+</html>
