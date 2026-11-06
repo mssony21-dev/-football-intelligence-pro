@@ -64,9 +64,22 @@ button:active { background: #ff7900; color: black; }
 <p>Nasza nowa platforma analizy piłkarskiej.</p>
 </div>
 
+
+<!-- PUCHARY EUROPEJSKIE -->
 <div class="panel">
-<h2>WYBÓR LIG</h2>
-<p>Wybierz kraj i przejdź do odpowiedniej ligi.</p>
+<h2>🏆 PUCHARY EUROPEJSKIE</h2>
+<p>Najważniejsze rozgrywki klubowe UEFA.</p>
+<div class="leagues">
+<button class="league-button" onclick="openLeague('Liga Mistrzów')">🏆 Liga Mistrzów</button>
+<button class="league-button" onclick="openLeague('Liga Europy')">🏆 Liga Europy</button>
+<button class="league-button" onclick="openLeague('Liga Konferencji')">🏆 Liga Konferencji</button>
+</div>
+</div>
+
+<!-- LIGI KRAJOWE -->
+<div class="panel">
+<h2>🌍 LIGI KRAJOWE</h2>
+<p>Wybierz ligę krajową.</p>
 <div class="leagues">
 <button class="league-button" onclick="openLeague('Anglia')">🏴 Anglia</button>
 <button class="league-button" onclick="openLeague('Hiszpania')">🇪🇸 Hiszpania</button>
@@ -79,48 +92,26 @@ button:active { background: #ff7900; color: black; }
 </div>
 </div>
 
+<!-- PUCHARY KRAJOWE -->
 <div class="panel">
-<h2>ANALIZATOR MECZÓW</h2>
-<p>Moduł w przygotowaniu.</p>
+<h2>🥇 PUCHARY KRAJOWE</h2>
+<p>Rozgrywki pucharowe poszczególnych państw.</p>
+<div class="leagues">
+<button class="league-button" onclick="openLeague('FA Cup')">🏆 FA Cup</button>
+<button class="league-button" onclick="openLeague('Copa del Rey')">🏆 Copa del Rey</button>
+<button class="league-button" onclick="openLeague('DFB-Pokal')">🏆 DFB-Pokal</button>
+<button class="league-button" onclick="openLeague('Coppa Italia')">🏆 Coppa Italia</button>
+<button class="league-button" onclick="openLeague('Coupe de France')">🏆 Coupe de France</button>
+<button class="league-button" onclick="openLeague('KNVB Beker')">🏆 KNVB Beker</button>
+<button class="league-button" onclick="openLeague('Taca de Portugal')">🏆 Taça de Portugal</button>
+<button class="league-button" onclick="openLeague('Puchar Polski')">🏆 Puchar Polski</button>
+</div>
 </div>
 
+<!-- WSZYSTKIE ROZGRYWKI -->
 <div class="panel">
-<h2>GENERATOR 100 KUPONÓW</h2>
-<p>Moduł w przygotowaniu.</p>
+<h2>⚽ WSZYSTKIE ROZGRYWKI</h2>
+<p>Jedno miejsce do przeglądania wszystkich dostępnych rozgrywek.</p>
+<button class="league-button" onclick="openLeague('Wszystkie rozgrywki')">OTWÓRZ WSZYSTKIE ROZGRYWKI</button>
 </div>
-
-<div class="panel">
-<h2>RAPORTY I STATYSTYKI</h2>
-<p>Moduł w przygotowaniu.</p>
-</div>
-
-</main>
-
-<section id="leagueView" class="hidden">
-<div class="panel">
-<h2 id="leagueTitle">WYBRANA LIGA</h2>
-<p id="leagueDescription"></p>
-<p>Moduł analizy meczów tej ligi zostanie tutaj uruchomiony.</p>
-</div>
-<button class="back" onclick="goHome()">← POWRÓT DO CENTRUM</button>
-</section>
-
-<script>
-function openLeague(name) {
-  document.getElementById('home').classList.add('hidden');
-  document.getElementById('leagueView').classList.remove('hidden');
-  document.getElementById('leagueTitle').textContent = name.toUpperCase();
-  document.getElementById('leagueDescription').textContent =
-    'Wybrana liga: ' + name;
-  window.scrollTo(0, 0);
-}
-
-function goHome() {
-  document.getElementById('leagueView').classList.add('hidden');
-  document.getElementById('home').classList.remove('hidden');
-  window.scrollTo(0, 0);
-}
-</script>
-
-</body>
-</html>
+  
